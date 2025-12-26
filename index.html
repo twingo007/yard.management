@@ -1,38 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yard Check-In</title>
-    <style>
-        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f4f4f9; }
-        .btn { background-color: #25D366; color: white; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .logo { max-width: 150px; margin-bottom: 20px; }
-    </style>
-</head>
-<body>
-    <h1 id="headline">Welcome</h1>
-    <a href="#" id="checkin-btn" class="btn">Start Check-In</a>
+<script>
+    const userLang = navigator.language || navigator.userLanguage;
+    const btn = document.getElementById('checkin-btn'); // Make sure your button has this ID
 
-    <script>
-        const userLang = navigator.language || navigator.userLanguage;
-        const btn = document.getElementById('checkin-btn');
-        const head = document.getElementById('headline');
+    // Replace [YOUR_NUMBER] with your WhatsApp Business API number
+    const waNumber = "49123456789"; 
 
-        // Logic for German, Polish, and English
-        if (userLang.startsWith('de')) {
-            head.innerText = "Willkommen";
-            btn.innerText = "Check-In starten (WhatsApp)";
-            btn.href = "https://wa.me/YOUR_PHONE_NUMBER?text=START_DE";
-        } else if (userLang.startsWith('pl')) {
-            head.innerText = "Witamy";
-            btn.innerText = "Zacznij odprawę (WhatsApp)";
-            btn.href = "https://wa.me/YOUR_PHONE_NUMBER?text=START_PL";
-        } else {
-            head.innerText = "Welcome";
-            btn.innerText = "Start Check-In (WhatsApp)";
-            btn.href = "https://wa.me/YOUR_PHONE_NUMBER?text=START_EN";
-        }
-    </script>
-</body>
-</html>
+    if (userLang.startsWith('de')) {
+        btn.href = `https://wa.me/${waNumber}?text=START_DE`;
+        btn.innerHTML = "Check-In starten (WhatsApp)";
+    } else if (userLang.startsWith('pl')) {
+        btn.href = `https://wa.me/${waNumber}?text=START_PL`;
+        btn.innerHTML = "Zacznij odprawę (WhatsApp)";
+    } else {
+        btn.href = `https://wa.me/${waNumber}?text=START_EN`;
+        btn.innerHTML = "Start Check-In (WhatsApp)";
+    }
+</script>
